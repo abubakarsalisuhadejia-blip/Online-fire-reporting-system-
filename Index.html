@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H Fire - Online Fire Reporting</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to H Fire</h1>
+    <p>Your trusted fire incident reporting platform</p>
+    <nav>
+      <a href="register.html">Register</a> |
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>About the System</h2>
+      <p>H Fire helps the public report fire outbreaks quickly and securely online, enabling the fire service to respond faster.</p>
+    </section>
+
+    <section>
+      <h2>Why Choose H Fire?</h2>
+      <ul>
+        <li>Fast and secure reporting</li>
+        <li>Easy user registration</li>
+        <li>Admin dashboard monitoring</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 H Fire. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+```
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - H Fire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Register to H Fire</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="registerForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="login.html">Login here</a>.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - H Fire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Login to H Fire</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="loginForm">
+      <label for="email">Email:</label>
+      <input type="email" id="loginEmail" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="loginPassword" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="register.html">Register here</a>.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #b30000;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #b30000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #800000;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #222;
+  color: #fff;
+  margin-top: 30px;
+}
+```
+
+-
+// Handle registration
+document.addEventListener('DOMContentLoaded', function () {
+  const registerForm = document.getElementById('registerForm');
+  const loginForm = document.getElementById('loginForm');
+
+  if (registerForm) {
+    registerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const user = { name, email, password };
+      localStorage.setItem(email, JSON.stringify(user));
+      alert('Registration successful! You can now login.');
+      window.location.href = 'login.html';
+    });
+  }
+
+  // Handle login
+  if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      const storedUser = JSON.parse(localStorage.getItem(email));
+
+      if (storedUser && storedUser.password === password) {
+[9/7, 8:09 PM] My Friend: alert('Login successful!');
+        localStorage.setItem('loggedInUser', storedUser.name);
+        window.location.href = 'dashboard.html';
+      } else {
+        alert('Invalid email or password.');
+      }
+    });
+  }
+});
+```
+
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - H Fire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>H Fire Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Welcome, <span id="username"></span>!</h2>
+    <p>Use the form below to report a fire incident:</p>
+
+    <form id="reportForm">
+      <label for="location">Location:</label>
+      <input type="text" id="location" required>
+
+      <label for="description">Description:</label>
+      <input type="text" id="description" required>
+
+      <button type="submit">Submit Report</button>
+    </form>
+
+    <div id="reportMsg" style="margin-top: 20px; color: green;"></div>
+  </main>
+
+  <script>
+    // Show username
+    const user = localStorage.getItem('loggedInUser');
+    if (!user) {
+      window.location.href = 'login.html';
+    } else {
+      document.getElementById('username').innerText = user;
+    }
+
+    // Handle report submission
+[9/7, 8:10 PM] My Friend: document.getElementById('reportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const location = document.getElementById('location').value;
+      const description = document.getElementById('description').value;
+
+      // Save report (local only)
+      const report = { location, description, user };
+      let reports = JSON.parse(localStorage.getItem('fireReports')) || [];
+      reports.push(report);
+      localStorage.setItem('fireReports', JSON.stringify(reports));
+
+      document.getElementById('reportMsg').innerText = "Report submitted successfully!";
+      this.reset();
+    });
+
+    // Logout
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
